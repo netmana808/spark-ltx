@@ -1,0 +1,23 @@
+{
+  "title": "Example Story",
+  "scenes": [
+    {
+      "id": "01",
+      "duration_s": 3,
+      "prompt": "a slow cinematic push-in, gentle breeze moves small background details",
+      "last_strength": 0.4
+    },
+    {
+      "id": "02",
+      "duration_s": 3,
+      "prompt": "a dolly to the right, subject holds position, distant light flickers",
+      "last_strength": 0.3
+    },
+    {
+      "id": "03",
+      "duration_s": 3,
+      "prompt": "the camera is locked on a tripod, subject breathes slowly",
+      "last_strength": 0.5
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spark-ltx"
+version = "0.1.0"
+description = "Batch driver for LTX-2.3 FLF2V workflows on a local ComfyUI server."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Sean Brittain" }]
+keywords = ["ltx", "ltx-2.3", "comfyui", "video", "flf2v"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Multimedia :: Video",
+]
+dependencies = []
+
+[project.scripts]
+spark-ltx-flf2v = "spark_ltx.flf2v:main"
+
+[project.urls]
+Homepage = "https://github.com/netmana808/spark-ltx"
+Issues = "https://github.com/netmana808/spark-ltx/issues"
+
+[tool.setuptools]
+packages = ["spark_ltx"]
