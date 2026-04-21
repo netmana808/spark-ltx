@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 VIDEO_EXTS = (".mp4", ".webm")
+IMAGE_EXTS = (".png", ".jpg", ".jpeg", ".webp")
 _OUTPUT_KEYS = ("video", "videos", "gifs", "images")
 
 
@@ -56,13 +57,18 @@ class ComfyClient:
                 print(f"  poll error: {exc}", flush=True)
         raise TimeoutError(f"prompt {prompt_id} timed out after {timeout:.0f}s")
 
-    def download(self, outputs: dict[str, Any], destination: Path) -> tuple[bool, int]:
-        """Walk the outputs payload, download the first video artifact, return (ok, bytes_written)."""
+    def download(
+        self,
+        outputs: dict[str, Any],
+        destination: Path,
+        extensions: tuple[str, ...] = VIDEO_EXTS,
+    ) -> tuple[bool, int]:
+        """Walk the outputs payload, download the first artifact matching ``extensions``, return (ok, bytes_written)."""
         for node_outputs in outputs.values():
             for key in _OUTPUT_KEYS:
                 for item in node_outputs.get(key, []):
                     filename = item.get("filename", "")
-                    if not filename.endswith(VIDEO_EXTS):
+                    if not filename.endswith(extensions):
                         continue
                     subfolder = item.get("subfolder", "")
                     file_type = item.get("type", "output")

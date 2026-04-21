@@ -21,6 +21,7 @@ dependencies = []
 
 [project.scripts]
 spark-ltx-flf2v = "spark_ltx.flf2v:main"
+spark-ltx-keyframes = "spark_ltx.keyframes:main"
 
 [project.urls]
 Homepage = "https://github.com/netmana808/spark-ltx"
