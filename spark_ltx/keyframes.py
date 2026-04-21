@@ -155,8 +155,8 @@ def build_parser() -> argparse.ArgumentParser:
         type=Path,
         help="Path to a FLUX.2 T2I workflow (API format)",
     )
-    parser.add_argument("--width", type=int, default=1024, help="Must be divisible by 32")
-    parser.add_argument("--height", type=int, default=1024, help="Must be divisible by 32")
+    parser.add_argument("--width", type=int, default=1024, help="Must be divisible by 16")
+    parser.add_argument("--height", type=int, default=1024, help="Must be divisible by 16")
     parser.add_argument(
         "--steps",
         type=int,
@@ -175,8 +175,8 @@ def build_parser() -> argparse.ArgumentParser:
 def main() -> None:
     args = build_parser().parse_args()
 
-    if args.width % 32 or args.height % 32:
-        raise SystemExit("--width and --height must each be divisible by 32")
+    if args.width % 16 or args.height % 16:
+        raise SystemExit("--width and --height must each be divisible by 16")
 
     plan = json.loads(args.plan.read_text())
     root = args.plan.parent
